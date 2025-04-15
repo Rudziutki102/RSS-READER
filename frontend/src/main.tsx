@@ -6,6 +6,7 @@ import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persist
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import './index.css'
 import App from './App.tsx'
+import ThemeToggle from './components/theme-toggle.tsx'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -27,6 +28,7 @@ createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <App />
+      <ThemeToggle />
     </QueryClientProvider>
   </StrictMode>,
 )
