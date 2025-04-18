@@ -11,7 +11,7 @@ const LeftColumn = () => {
             <Icon
                 onClick={() => setIsOpen(!isOpen)}
                 className={`absolute top-4 right-3 z-20 bg-gray-900 text-white p-2 rounded size-12 md:hidden`} />
-            <aside className={`absolute md:static h-full md:translate-0 bg-gray-900 z-10 md:w-1/5 border-r border-gray-300 dark:border-gray-700 p-4 overflow-y-auto w-4/5  ${isOpen ? '-translate-0' : '-translate-x-full'} duration-300 ease-in-out`}>
+            <aside className={`absolute md:static h-full md:translate-0 bg-white dark:bg-gray-900 z-10 md:w-1/5 border-r border-gray-300 dark:border-gray-700 p-4 overflow-y-auto w-4/5  ${isOpen ? '-translate-0' : '-translate-x-full'} duration-150 ease-in-out`}>
                 <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-bold">Feeds</h2>
                 </div>
@@ -44,7 +44,7 @@ const LeftColumn = () => {
                                     </button>
                                 </div>
                             ) : (
-                                <span>{provider.title}</span>
+                                <span className="max-w-3/4">{provider.title}</span>
                             )}
                             <div className="flex items-center space-x-2">
                                 <X

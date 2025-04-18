@@ -11,7 +11,6 @@ type NewsPreviewModalProps = {
 
 export default function NewsPreviewModal({ feed, onClose }: NewsPreviewModalProps) {
     if (!feed) return null;
-
     return modalRoot ? createPortal(
         <AnimatePresence>
             <motion.div
@@ -32,7 +31,7 @@ export default function NewsPreviewModal({ feed, onClose }: NewsPreviewModalProp
                     <button onClick={onClose} className="absolute top-2 right-3 text-white text-xl">&times;</button>
                     <p className="dark:text-white text-sm mb-2">{new Date(feed.isoDate).toLocaleDateString()}</p>
                     <h1 className="dark:text-white font-bold text-2xl">{feed.title}</h1>
-                    {feed.enclosure?.url ? (
+                    {feed.enclosure?.url && feed.enclosure.type == "image/jpeg" ? (
                         <div className='aspect-video w-full mb-4'>
                             <ImageComponent src={feed.enclosure.url} alt={feed.title} />
                         </div>
