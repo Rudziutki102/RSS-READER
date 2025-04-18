@@ -26,7 +26,6 @@ export default function NewsPreviewModal({ feed, onClose }: NewsPreviewModalProp
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.9, opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    onClick={(e) => e.stopPropagation()}
                 >
                     <button onClick={onClose} className="absolute top-2 right-3 text-white text-xl">&times;</button>
                     <p className="dark:text-white text-sm mb-2">{new Date(feed.isoDate).toLocaleDateString()}</p>

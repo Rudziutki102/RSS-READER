@@ -45,7 +45,9 @@ const FeedsList = () => {
                             )
                         }} />
                     ) : null}
-                    <NewsModal feed={selectedNews} onClose={() => setSelectedNews(null)} />
+                    {selectedNews ? (
+                        <NewsModal feed={selectedNews} onClose={() => setSelectedNews(null)} />
+                    ) : null}
                 </div>
             </section>
         </>
