@@ -11,7 +11,7 @@ import ArticleItem from "./article-item"
 const NewsModal = lazy(() => import('./news-preview-modal'))
 const FeedsList = () => {
     const selectedFeed = useFeedProvdersStore(state => state.selectedFeed)
-    const { data, isSuccess, isLoading } = useFeedList(selectedFeed)
+    const { data, isLoading } = useFeedList(selectedFeed)
     const { filteredData, debounced, filterFavorites, toggleFavouritesFilter, filterRead, toggleReadFilter } = useDebouncedFilterValue(data?.items || [])
     const markAsRead = useFeedProvdersStore(state => state.markAsRead)
     const [selectedNews, setSelectedNews] = useState<FeedItem | null>(null)
@@ -29,12 +29,12 @@ const FeedsList = () => {
                             <LoaderCircle className="dark:text-white size-24 animate-spin" />
                         </div>
                     ) : null}
-                    {(data?.items?.length === 0 || !data) && !isLoading ? (
+                    {filteredData.length === 0 && !isLoading ? (
                         <div className="flex justify-center items-center h-full">
                             <p className="text-gray-500 dark:text-gray-400">No feeds available</p>
                         </div>
                     ) : null}
-                    {isSuccess && (
+                    {filteredData.length > 0 ? (
                         <Virtuoso className="h-full" data={filteredData} itemContent={(_, feed) => {
                             return (
                                 <ArticleItem feed={feed} onClick={() => {
@@ -44,7 +44,7 @@ const FeedsList = () => {
                                 } />
                             )
                         }} />
-                    )}
+                    ) : null}
                     <NewsModal feed={selectedNews} onClose={() => setSelectedNews(null)} />
                 </div>
             </section>
